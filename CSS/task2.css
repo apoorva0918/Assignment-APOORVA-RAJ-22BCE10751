@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+
+.vertical-nav {
+    width: 200px;
+    border: 2px solid black;
+    background-color: #b0d8dd;
+    padding: 0;
+}
+
+.vertical-nav a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: blue;
+    font-size: 18px;
+}
+
+.vertical-nav a.active {
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.horizontal-nav {
+    display: flex;
+    border: 2px solid black;
+    background-color: lightgray;
+    width: fit-content;
+}
+
+.horizontal-nav a {
+    padding: 12px 20px;
+    text-decoration: none;
+    color: blue;
+    font-size: 18px;
+    border-left: 2px solid blue;
+}
+
+.horizontal-nav a:first-child {
+    border-left: none;
+}
+
+.horizontal-nav a.active {
+    background-color: gray;
+    color: white;
+    font-weight: bold;
+}

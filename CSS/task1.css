@@ -1,0 +1,41 @@
+table {
+    width: 80%;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border: 2px solid #76a5af;
+    background-color: #b0d8dd;
+    border-radius: 10px;
+    text-align: left;
+    margin: 20px auto;
+}
+
+th, td {
+    border: 2px solid #76a5af;
+    padding: 10px;
+}
+
+th {
+    background-color: #76a5af;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 15px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+.shape {
+    width: 100px;
+    height: 60px;
+    border: 2px solid #76a5af;
+    border-radius: 10px;
+}
+
+.oval {
+    border-radius: 50px;
+}
