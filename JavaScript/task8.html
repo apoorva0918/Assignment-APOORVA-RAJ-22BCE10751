@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Task 8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        label {
+            width: 30%;
+            text-align: left;
+            font-weight: bold;
+        }
+        input, select {
+            width: 65%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        .checkbox-group {
+            display: flex;
+            justify-content: flex-start;
+            width: 65%;
+            flex-wrap: wrap;
+        }
+        .checkbox-group label {
+            width: auto;
+            margin-right: 10px;
+        }
+        button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+        
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName">
+            <span class="error" id="firstNameError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName">
+            <span class="error" id="lastNameError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email">
+            <span class="error" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+            <span class="error" id="passwordError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="confirmPassword">Re-enter Password:</label>
+            <input type="password" id="confirmPassword">
+            <span class="error" id="confirmPasswordError"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Gender:</label>
+            <label><input type="radio" name="gender" value="Male"> Male</label>
+            <label><input type="radio" name="gender" value="Female"> Female</label>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age">
+            <span class="error" id="ageError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone">
+            <span class="error" id="phoneError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address">
+            <span class="error" id="addressError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="state">State:</label>
+            <input type="text" id="state">
+            <span class="error" id="stateError"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <select id="country">
+                <option value="">Choose your country</option>
+                <option value="India">India</option>
+                <option value="USA">USA</option>
+                <option value="UK">UK</option>
+            </select>
+            <span class="error" id="countryError"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Languages Known:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" name="language" value="English"> English</label>
+                <label><input type="checkbox" name="language" value="Kannada"> Kannada</label>
+                <label><input type="checkbox" name="language" value="Hindi"> Hindi</label>
+                <label><input type="checkbox" name="language" value="Telugu"> Telugu</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" id="declaration">
+            <label for="declaration">I declare all given details are true</label>
+        </div>
+
+        <button type="submit">REGISTER</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let isValid = true;
+
+        function showError(id, message) {
+            document.getElementById(id).textContent = message;
+        }
+
+        function clearError(id) {
+            document.getElementById(id).textContent = "";
+        }
+
+        let firstName = document.getElementById("firstName").value.trim();
+        let lastName = document.getElementById("lastName").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirmPassword").value;
+        let age = document.getElementById("age").value;
+        let phone = document.getElementById("phone").value;
+        let address = document.getElementById("address").value.trim();
+        let state = document.getElementById("state").value.trim();
+        let country = document.getElementById("country").value;
+        let declaration = document.getElementById("declaration").checked;
+
+        if (firstName === "") { showError("firstNameError", "Required"); isValid = false; } else { clearError("firstNameError"); }
+        if (lastName === "") { showError("lastNameError", "Required"); isValid = false; } else { clearError("lastNameError"); }
+        if (!email.includes("@")) { showError("emailError", "Invalid Email"); isValid = false; } else { clearError("emailError"); }
+        if (password.length < 6) { showError("passwordError", "Min 6 characters"); isValid = false; } else { clearError("passwordError"); }
+        if (password !== confirmPassword) { showError("confirmPasswordError", "Passwords don't match"); isValid = false; } else { clearError("confirmPasswordError"); }
+        if (age < 18) { showError("ageError", "Must be 18+"); isValid = false; } else { clearError("ageError"); }
+        if (phone.length < 10) { showError("phoneError", "Invalid Number"); isValid = false; } else { clearError("phoneError"); }
+        if (country === "") { showError("countryError", "Select a country"); isValid = false; } else { clearError("countryError"); }
+        if (!declaration) { alert("Please accept declaration!"); isValid = false; }
+
+        if (isValid) { alert("Registration Successful!"); }
+    });
+</script>
+
+</body>
+</html>
